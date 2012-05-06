@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Trendyyy in Tweetsss...</title>
+</head>
+<body>
+<style>
+.highlight {
+font-style: italic;
+background-color: #0f0;
+}
+
+#time{
+margin:10px;
+padding:10px;
+border:1px solid #000;
+background-color: #FFF;
+float:left;
+}
+
+#trendy{
+margin:10px;
+padding:10px;
+border:1px solid #000;
+background-color: #FFF;
+float:right;
+}
+</style>
+
+<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../js/underscore.js"></script>
+<script type="text/javascript" src="../js/test_browser.js"></script>
+<div id="header">
+<h2>Trendy Mendyyyy </h2>
+</div>
+<div id="time">
+</div>
+
+<div id="trendy">
+
+</div>
+
+<div id="test">
+<p> Test </p>
+</div>
+<script>
+var c = _.template("<% _.each(_.keys(trends).sort(), function(name) { %> <li id = timeli><%= name %></li> <% }); %>");
+
+//Without Jquery
+/*
+var a = document.getElementById("time");
+
+a.innerHTML = c(t);
+*/
+
+
+$('#time').html(c(t));
+
+
+//This also works as expected 
+var trendy_template = _.template("<% _.each(current, function(obj) { %> <li><%= obj.name %></li> <% }); %>");
+//var trendy_template = _.template("<% _.each(current, function(obj) { var name = obj.name;%> <li><%= name %></li> <% }); %>");
+$('li').click(function(){
+
+
+$('#trendy').html("<h3>Trendy Tweets</h3>"+this.innerText+trendy_template({current:t.trends[this.innerText]}));
+console.log("<h3>Trendy Tweets</h3>"+this.innerText);
+console.log(this);
+_.each(this,function (val,key){
+console.log(key+':'+val);
+});
+});
+
+//To test the adding of class
+$('p').addClass('highlight');
+</script>
+
+</body>
+</html>
+
