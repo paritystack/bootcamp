@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Trendyyy in Tweetsss...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Just a small trends show..">
+    <meta name="author" content="Manu M G">
+
+    <!-- Le styles -->
+    <link href="../js/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="../js/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../js/bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../js/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../js/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../js/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../js/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Trendy Mendyyyy</a>
+      
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h1>Twitter trendss...</h1>
+	<br>
+	<div class ="row">
+	  <div class ="span6" id="time"></div>
+	  <div class ="span6" id="trendy"></div>
+
+    </div> <!-- /container -->
+
+
+<script>
+$(document).ready(function() {
+
+var c = _.template("<% _.each(_.keys(trends).sort(), function(name) { %> <li id = timeli><%= name %></li> <% }); %>");
+
+$('#time').html(c(t));
+
+
+//This also works as expected 
+var trendy_template = _.template("<% _.each(current, function(obj) { %> <li><%= obj.name %></li> <% }); %>");
+$('li').click(function(){
+
+
+$('#trendy').html("<h3>Trendy Tweets</h3>"+$(this).text()+trendy_template({current:t.trends[$(this).text()]}));
+console.log("<h3>Trendy Tweets</h3>"+$(this).text());
+console.log($(this));
+_.each(this,function (val,key){
+console.log(key+':'+val);
+});
+});
+
+});
+</script>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/bootstrap/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="../js/underscore.js"></script>
+<script type="text/javascript" src="../js/test_browser.js"></script>
+  </body>
+</html>
